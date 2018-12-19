@@ -66,6 +66,6 @@
 
 ### Maintainer
 
-<img src="./static/description/icon.png" width="50%" alt="深圳市知链科技有限公司" />
+<img src="./static/description/icon.png" width="20%" alt="深圳市知链科技有限公司" />
 
 该模块由深圳市知链科技有限公司开发及维护。
