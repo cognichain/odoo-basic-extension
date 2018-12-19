@@ -41,7 +41,7 @@
 <field name="arch" type="xml">
     <form string="View name">
         ...
-        <field name="a" widget="color_char" options="{'color': 'blue', 'title': 'It's same!, 'expr': 'a != b'}"/>
+        <field name="a" widget="color_char" options="{'color': 'blue', 'title': 'It's same!, 'expr': 'a == b'}"/>
         <field name="b"/>
     </form>
 </field>
