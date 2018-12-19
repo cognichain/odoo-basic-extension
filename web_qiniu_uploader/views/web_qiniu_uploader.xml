@@ -1,0 +1,8 @@
+<odoo>
+    <template id="assets_backend" name="web_qiniu_uploader assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/web_qiniu_uploader/static/src/lib/qiniu@2.2.2.min.js"></script>
+            <script type="text/javascript" src="/web_qiniu_uploader/static/src/js/web_qiniu_uploader.js"></script>
+        </xpath>
+    </template>
+</odoo>
