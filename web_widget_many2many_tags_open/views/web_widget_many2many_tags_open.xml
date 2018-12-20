@@ -1,0 +1,7 @@
+<odoo>
+    <template id="assets_backend" name="web_form_dynamic_button assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/web_widget_many2many_tags_open/static/src/js/web_widget_many2many_tags_open.js"></script>
+        </xpath>
+    </template>
+</odoo>
