@@ -3,7 +3,6 @@ odoo.define('web_widget_colored_field', function (require) {
 
     var AbstractField = require('web.AbstractField');
     var basic_fields = require('web.basic_fields');
-    var fieldRegistry = require('web.field_registry');
     var relational_fields = require('web.relational_fields');
 
     var FieldChar = basic_fields.FieldChar;
@@ -44,62 +43,68 @@ odoo.define('web_widget_colored_field', function (require) {
         }
     });
 
-    var FieldColorChar = FieldChar.extend({
+    FieldChar.include({
         _renderReadonly: function () {
-            if (this.value) {
-                var $colorNode = this._getColorNode(this.record, this.nodeOptions);
+            var options = this.nodeOptions;
+            if (this.value && 'color' in options) {
+                var $colorNode = this._getColorNode(this.record, options);
                 if ($colorNode) {
                     this.$el.html($colorNode)
                 } else {
                     this._super()
                 }
+            } else {
+                this._super()
             }
         }
     });
 
-    var FieldColorFloat = FieldFloat.extend({
+    FieldFloat.include({
         _renderReadonly: function () {
-            if (this.value) {
-                var $colorNode = this._getColorNode(this.record, this.nodeOptions);
+            var options = this.nodeOptions;
+            if (this.value && 'color' in options) {
+                var $colorNode = this._getColorNode(this.record, options);
                 if ($colorNode) {
                     this.$el.html($colorNode)
                 } else {
                     this._super()
                 }
+            } else {
+                this._super()
             }
         }
     });
 
-    var FieldColorInteger = FieldInteger.extend({
+    FieldInteger.include({
         _renderReadonly: function () {
-            if (this.value) {
-                var $colorNode = this._getColorNode(this.record, this.nodeOptions);
+            var options = this.nodeOptions;
+            if (this.value && 'color' in options) {
+                var $colorNode = this._getColorNode(this.record, options);
                 if ($colorNode) {
                     this.$el.html($colorNode)
                 } else {
                     this._super()
                 }
+            } else {
+                this._super()
             }
         }
     });
 
-    fieldRegistry
-        .add('color_char', FieldColorChar)
-        .add('color_float', FieldColorFloat)
-        .add('color_integer', FieldColorInteger);
-
-    var FieldColorSelection = FieldSelection.extend({
+    FieldSelection.include({
         _renderReadonly: function () {
-            if (this.value) {
-                var $colorNode = this._getColorNode(this.record, this.nodeOptions);
+            var options = this.nodeOptions;
+            if (this.value && 'color' in options) {
+                var $colorNode = this._getColorNode(this.record, options);
                 if ($colorNode) {
                     this.$el.html($colorNode)
                 } else {
                     this._super()
                 }
+            } else {
+                this._super()
             }
         }
     });
 
-    fieldRegistry.add('color_selection', FieldColorSelection);
 });
