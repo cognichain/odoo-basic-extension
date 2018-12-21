@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+
+        <record id="view_qiniu_config_form" model="ir.ui.view">
+            <field name="name">qiniu.config.settings.form_view</field>
+            <field name="model">res.config.settings</field>
+            <field name="arch" type="xml">
+                <form string="七牛云配置">
+                    <header>
+                        <button string="应用" type="object" name="execute" class="oe_highlight"/>
+                        <button string="取消" type="object" name="cancel" class="oe_link"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="access_key" required="True"/>
+                            <field name="secret_key" required="True"/>
+                            <field name="bucket" required="True"/>
+                            <field name="domain" placeholder="https://yourdomain.com" required="True"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_qiniu_config" model="ir.actions.act_window">
+            <field name="name">七牛云配置</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_qiniu_config_form"/>
+            <field name="target">inline</field>
+        </record>
+
+        <menuitem id="menu_3rd_party_config" name="第三方服务" parent="base.menu_custom" groups="base.group_no_one"/>
+        <menuitem id="menu_qiniu_config" name="七牛云" parent="menu_3rd_party_config" action="action_qiniu_config"
+                  sequence="6"/>
+
+    </data>
+</odoo>

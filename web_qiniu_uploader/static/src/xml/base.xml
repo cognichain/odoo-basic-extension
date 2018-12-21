@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="QiniuUploader">
+        <div class="oe_import_box col-sm-12">
+                <div class="col-sm-12">
+                    <p>
+                        请选择要添加的附件
+                    </p>
+                </div>
+                <div class="col-sm-12">
+                    <div class="input-group">
+                        <input type="text" class="oe_import_file_show form-control"
+                               placeholder="No file chosen..."/>
+                        <span class="input-group-btn">
+                            <label class="btn btn-default" for="my-file-selector">
+                                <input id-attf-id="qiniu_file"
+                                       name="file" id="my-file-selector" class="oe_import_file" type="file"
+                                       style="display:none;"/>
+                                选择文件
+                            </label>
+                        </span>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-primary oe_import_file_confirm"
+                                    disabled="disabled">上传
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+    </t>
+</templates>
