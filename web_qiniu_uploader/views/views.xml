@@ -4,7 +4,6 @@
         <record id="view_qiniu_config_form" model="ir.ui.view">
             <field name="name">qiniu.config.settings.form_view</field>
             <field name="model">res.config.settings</field>
-            <field name="priority" eval="99"/>
             <field name="arch" type="xml">
                 <form string="七牛云配置">
                     <header>
@@ -18,10 +17,6 @@
                             <field name="bucket" required="True"/>
                             <field name="domain" placeholder="https://yourdomain.com" required="True"/>
                         </group>
-                    </group>
-                    <group>
-                        <button string="测试1" type="object" name="test_config_method_1" class="oe_link"/>
-                        <button string="测试2" type="object" name="test_config_method_2" class="oe_link"/>
                     </group>
                 </form>
             </field>
