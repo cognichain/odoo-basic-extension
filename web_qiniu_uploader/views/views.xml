@@ -4,6 +4,7 @@
         <record id="view_qiniu_config_form" model="ir.ui.view">
             <field name="name">qiniu.config.settings.form_view</field>
             <field name="model">res.config.settings</field>
+            <field name="priority" eval="99"/>
             <field name="arch" type="xml">
                 <form string="七牛云配置">
                     <header>
