@@ -28,7 +28,7 @@ Contact us to know more about us and our capabilities.
 Below is Chinese version README
 
 
-SRM订单协同
+SRM采购协同
 
 扩展Odoo官方的采购模块，提供一个供应商门户，让您可以与您的供应商在线协同报价、订单、发货。
 1. 邀请供应商注册供应商门户账号。
