@@ -25,12 +25,12 @@ Contact us to know more about us and our capabilities.
 - Mobile: +86 13923428533
 - QQ group: 713722419
 
-Below are Chinese version README
+Below is Chinese version README
 
 
 SRM订单协同
 
-扩展Odoo官方采购模块提供一个供应商门户，让您可以与您的供应商在线协同报价、订单、发货。
+扩展Odoo官方的采购模块，提供一个供应商门户，让您可以与您的供应商在线协同报价、订单、发货。
 1. 邀请供应商注册供应商门户账号。
 2. 供应商门户提供的功能：
    - 采购员“通过EMAIL发送”询价单后，供应商可在线查看询价单并提交报价，不再需要采购员手动录入价格到询价单。
