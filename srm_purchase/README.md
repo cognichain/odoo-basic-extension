@@ -1,15 +1,54 @@
-# 供应商协同模块
+SRM Purchase Collaboration
+An extension to Odoo Purchase App to allow you collaborate with suppliers on RFQ, Purchase Order, Shipment via a supplier portal.
+1. Invite supplier to register to access supplier portal.
+2. Features at supplier portal:
+   - After buyer "SEND BY EMAIL" RFQ, supplier can review RFQ online and submit quotation, no need buyer to manual input supplier quotation.
+   - After buyer "CONFIRM ORDER", supplier can review ORDER online and submit ASN (Advanced Shipping Notice), system will automatically generate a WH/IN receipt accordingly.
 
-用于向供应商发送采购单，并提供订单协同、报价、发货等功能。
+This is an open source community version of Cognichain SRM Purchase Module. Contact us if you want a more powerful SRM system based on Odoo. Here are some of the additional features provided by commercial version.
+1. More powerful supplier portal:
+   - Before ASN, supplier can submit estimated shipping schedule.
+   - After ASN, supplier can check if buyer have "RECEIVE PRODUCTS".
+   - Support split shipments.
+   - Support customized approval process on Purchase Order.
+2. A seperate and more powerful RFQ App,
+   - Invite multiple suppliers to one online RFQ/bidding process.
+   - Support multiple rounds of bidding/negotiation.
+   - Online RFQ result analyze.
+   - Automatically import to Vendor Pricelists, save buyer from manual input supplier quotation.
 
+Contact us to know more about us and our capabilities.
+website: http://www.cognichain.com/
+Email: sales@cognichain.com
+Phone: +86 755 33941765 ext. 801
+Mobile: +86 13923428533
+QQ group: 713722419
 
-###### 一、供应商端portal页面:
-1.询价单：采购方发送的询价单，取消的订单（包括已取消的询价单、采购订单），均在此栏显示；
-2.采购订单：采购方确认的采购订单，取消的订单（包括已取消的询价单、采购订单），均在此栏显示；
-###### 二、供应商端询价单详情页面:
-1.界面显示“订单状态: 询价中”，供应商输入价格后，点击【提交报价】完成报价流程；
-2.界面显示“订单状态: 已取消”，表示采购方已取消订单，界面上的【提交报价】不可操作；
-###### 三、供应商端询价单详情页面：
-1.界面显示“订单状态: 已取消”，表示采购方已取消订单，界面上的【发货】不可操作；
-2.界面显示“发货状态: 待发货 ”，供应商点击【发货】进入发货详情页面，点击【确认发货】，跳转到“发货结果”页面（页面显示“ 发货确认成功 ”）；
-3.界面显示“发货状态: 全部发货”，表示已完成发货。
+Below are Chinese version README
+---------------------------------------------------------------
+
+SRM订单协同
+扩展Odoo官方采购模块提供一个供应商门户，让您可以与您的供应商在线协同报价、订单、发货。
+1. 邀请供应商注册供应商门户账号。
+2. 供应商门户提供的功能：
+   - 采购员“通过EMAIL发送”询价单后，供应商可在线查看询价单并提交报价，不再需要采购员手动录入价格到询价单。
+   - 采购员“确认订单”后，供应商可在线查看订单并发货，系统自动生成一张待入库的入库单。
+
+这是知链SRM采购模块的开源社区版。您可以联系我们以获取功能更强大的商业版本。下面列出了一部分商业版提供的功能特性。
+1. 更强大的供应商门户：
+   - 发货前，供应商可以提交预估的发货计划。
+   - 发货后，供应商可以查看采购方是否已经收货入库。
+   - 支持分批发货。
+   - 支持订单自定义审批流。
+2. 单独的且功能更强大的在线询报价/招标模块。
+   - 采购招标一次邀请多家供应商在线询比价。
+   - 支持多轮次报价。
+   - 在线报价分析。
+   - 询比价结果自动导入供应商价格表。
+
+联系我们：
+官网：http://www.cognichain.com/
+Email：sales@cognichain.com
+电话：+86 755 33941765 ext. 801
+手机：+86 13923428533
+QQ群：713722419
