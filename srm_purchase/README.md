@@ -23,7 +23,7 @@ Contact us to know more about us and our capabilities.
 - Email: sales@cognichain.com
 - Phone: +86 755 33941765 ext. 801
 - Mobile: +86 13923428533
-- QQ group: 713722419
+- QQ group: 713722419 (Odoo SRM discussion group)
 
 Below is Chinese version README
 
@@ -53,4 +53,4 @@ SRM采购协同
 - Email：sales@cognichain.com
 - 电话：+86 755 33941765 ext. 801
 - 手机：+86 13923428533
-- QQ群：713722419
+- QQ群：713722419（Odoo SRM采购管理讨论群）
