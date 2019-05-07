@@ -1,0 +1,5 @@
+[flake8]
+ignore = W292,E722,E231,E265,F821, E501
+max-line-length = 120
+max-complexity = 10
+exclude = *__init__.py,*/__init__.py

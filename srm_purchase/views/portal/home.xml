@@ -1,0 +1,22 @@
+<odoo>
+    <data>
+
+        <template id="portal_my_home_po" name="Portal My Home : po entries"
+                  inherit_id="purchase.portal_my_home_purchase" priority="20">
+            <xpath expr="//a[@href='/my/purchase']" position="replace">
+                <a href="/my/purchase">采购订单</a>
+            </xpath>
+        </template>
+
+        <template id="portal_my_home_purchase_base_module" name="Portal My Home : purchase base module"
+                  inherit_id="portal.portal_my_home" priority="20">
+            <xpath expr="//ul[hasclass('o_portal_docs')]" position="inside">
+                <li t-if="purchase_quote_count" class="list-group-item">
+                    <span class="badge" t-esc="purchase_quote_count"/>
+                    <a href="/my/purchase_quotation">询价单</a>
+                </li>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>
