@@ -1,7 +1,7 @@
 SRM Purchase Collaboration
 
 An extension to Odoo Purchase App to allow you collaborate with suppliers on RFQ, Purchase Order, Shipment via a supplier portal.
-1. Invite supplier to register to access supplier portal.
+1. Invite supplier to register to supplier portal.
 2. Features at supplier portal:
    - After buyer "SEND BY EMAIL" RFQ, supplier can review RFQ online and submit quotation, no need buyer to manual input supplier quotation.
    - After buyer "CONFIRM ORDER", supplier can review ORDER online and submit ASN (Advanced Shipping Notice), system will automatically generate a WH/IN receipt accordingly.
