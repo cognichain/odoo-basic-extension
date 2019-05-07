@@ -1,0 +1,31 @@
+stages:
+  - flake8
+  - update
+
+flake8x:
+  stage: flake8
+  image: xxx008/pyflake8
+  tags:
+    - 174_docker
+  script:
+    - echo $CI_PROJECT_NAME
+    - echo $CI_COMMIT_REF_NAME
+    - flake8 .
+
+174_update:
+  stage: update
+  tags:
+    - 174_mro
+  script:
+    - echo $CI_PROJECT_NAME
+    - echo $CI_COMMIT_REF_NAME
+    - echo $CI_COMMIT_MESSAGE
+    - /workspace/srm_sale/scripts/dev_update_code.sh $CI_PROJECT_NAME $CI_COMMIT_REF_NAME $CI_COMMIT_MESSAGE
+  only:
+    - tags
+    - master
+  variables:
+    GIT_STRATEGY: none
+
+
+

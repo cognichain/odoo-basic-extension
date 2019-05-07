@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form_srm_purchase_use_approval_workflow_module" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.srm.purchase.use.approval.workflow.module</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="10"/>
+        <field name="inherit_id" ref="purchase.res_config_settings_view_form_purchase"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('app_settings_block') and @data-key='purchase']/div[hasclass('o_settings_container')][1]/div[hasclass('o_setting_box')][1]/div[hasclass('o_setting_right_pane')]/div[(hasclass('content-group'))]" position="after">
+                <div class="content-group" attrs="{'invisible': [('po_order_approval', '=', False)]}">
+                    <div class="row mt16">
+                        <label for="use_approval_workflow_module" class="col-md-4 o_light_label"/>
+                        <field name="use_approval_workflow_module"/>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
