@@ -5,7 +5,7 @@
 
 The basic extensions for Odoo ✨
 
-## 新发布采购协同模块v0.1
+## 新发布odoo采购协同模块v0.1
 
 项目地址：
 https://github.com/cognichain/srm_purchase
