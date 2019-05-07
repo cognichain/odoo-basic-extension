@@ -19,16 +19,17 @@ This is an open source community version of Cognichain SRM Purchase Module. Cont
    - Automatically import to Vendor Pricelists, save buyer from manual input supplier quotation.
 
 Contact us to know more about us and our capabilities.
-website: http://www.cognichain.com/
-Email: sales@cognichain.com
-Phone: +86 755 33941765 ext. 801
-Mobile: +86 13923428533
-QQ group: 713722419
+- website: http://www.cognichain.com/
+- Email: sales@cognichain.com
+- Phone: +86 755 33941765 ext. 801
+- Mobile: +86 13923428533
+- QQ group: 713722419
 
 Below are Chinese version README
----------------------------------------------------------------
+
 
 SRM订单协同
+
 扩展Odoo官方采购模块提供一个供应商门户，让您可以与您的供应商在线协同报价、订单、发货。
 1. 邀请供应商注册供应商门户账号。
 2. 供应商门户提供的功能：
@@ -48,8 +49,8 @@ SRM订单协同
    - 询比价结果自动导入供应商价格表。
 
 联系我们：
-官网：http://www.cognichain.com/
-Email：sales@cognichain.com
-电话：+86 755 33941765 ext. 801
-手机：+86 13923428533
-QQ群：713722419
+- 官网：http://www.cognichain.com/
+- Email：sales@cognichain.com
+- 电话：+86 755 33941765 ext. 801
+- 手机：+86 13923428533
+- QQ群：713722419
