@@ -1,10 +1,10 @@
 # coding=utf-8
 
 {
-    'name': 'SRM Purchase',
+    'name': 'SRM Purchase Collaboration',
     'version': '0.1',
-    'summary': '采购协同增强模块',
-    'description': """""",
+    'summary': 'SRM采购协同',
+    'description': """An extension to Odoo Purchase App to allow you collaborate with suppliers on RFQ, Purchase Order, Shipment via a supplier portal.""",
     'author': 'Cognichain',
     'website': 'http://www.cognichain.com/',
     'depends': ['purchase', 'website'],
