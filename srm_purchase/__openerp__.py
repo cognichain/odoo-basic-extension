@@ -3,8 +3,8 @@
 {
     'name': 'SRM Purchase Collaboration',
     'version': '0.1',
-    'summary': 'SRM采购协同',
-    'description': """An extension to Odoo Purchase App to allow you collaborate with suppliers on RFQ, Purchase Order, Shipment via a supplier portal.""",
+    'summary': 'An extension to Odoo Purchase App to allow you collaborate with suppliers on RFQ, Purchase Order, Shipment via a supplier portal.',
+    'description': """""",
     'author': 'Cognichain',
     'website': 'http://www.cognichain.com/',
     'depends': ['purchase', 'website'],
