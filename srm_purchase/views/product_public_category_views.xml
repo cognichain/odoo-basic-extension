@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <menuitem action="website_sale.product_public_category_action" id="product_public_category_menuitem" name="电商分类" parent="parent_menu_srm_settings" sequence="10" groups="srm_purchase.group_product_admin"/>
+
+    </data>
+</openerp>
