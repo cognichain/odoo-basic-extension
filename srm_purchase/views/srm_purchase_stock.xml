@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="srm_purchase_stock_picking_type_action" model="ir.actions.act_window">
+            <field name="name">库存</field>
+            <field name="res_model">stock.picking.type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new operation type.
+              </p><p>
+                The operation type system allows you to assign each stock
+                operation a specific type which will alter its views accordingly.
+                On the operation type you could e.g. specify if packing is needed by default,
+                if it should show the customer.
+              </p>
+            </field>
+        </record>
+
+        <menuitem
+            action="srm_purchase_stock_picking_type_action"
+            id="srm_purchase_stock_picking_type_menu"
+            parent="parent_menu_srm_invoice" sequence="8"
+            name="库存"/>
+    </data>
+</odoo>

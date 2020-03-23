@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <menuitem action="product.attribute_action" id="product_attribute_menuitem" name="属性" parent="parent_menu_srm_settings" sequence="10" groups="srm_purchase.group_product_admin"/>
+
+    </data>
+</openerp>
