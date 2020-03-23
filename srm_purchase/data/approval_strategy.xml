@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- 审批策略 -->
+    <data noupdate="1">
+        <record id="default_purchase_approval_workflow" model="approval.strategy">
+            <field name="name">采购单审批流</field>
+            <field name="res_model">purchase.order</field>
+        </record>
+    </data>
+</odoo>

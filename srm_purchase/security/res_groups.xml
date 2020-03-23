@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	
+    <record id="module_cate_invoice" model="ir.module.category">
+        <field name="name">进销存</field>
+        <field name="description">False</field>
+        <field name="sequence">0</field>
+    </record>
+
+    <record id="group_product_admin" model="res.groups">
+        <field name="name">产品管理</field>
+        <field name="category_id" ref="srm_purchase.module_cate_invoice"/>
+        <field name="users" eval="[
+			(4, ref('base.user_root')),
+		]"/>
+    </record>
+
+    <record id="group_purchase_main" model="res.groups">
+        <field name="name">采购</field>
+        <field name="category_id" ref="srm_purchase.module_cate_invoice"/>
+        <field name="users" eval="[
+			(4, ref('base.user_root')),
+		]"/>
+    </record>
+
+    <record id="group_sale_main" model="res.groups">
+        <field name="name">销售</field>
+        <field name="category_id" ref="srm_purchase.module_cate_invoice"/>
+        <field name="users" eval="[
+			(4, ref('base.user_root')),
+		]"/>
+    </record>
+	
+</odoo>
