@@ -70,6 +70,8 @@ class PurchaseCustomerPortal(CustomerPortal):
             'purchase': {'label': '采购订单', 'domain': [('state', '=', 'purchase')], 'seq': 2},
             'done': {'label': '已锁定', 'domain': [('state', '=', 'done')], 'seq': 3},
             'cancel': {'label': '已取消', 'domain': [('state', '=', 'cancel')], 'seq': 4},
+            # 'pending': {'label': '待确认', 'domain': [('state', '=', 'pending')]},
+            # 'refuse': {'label': '已拒绝', 'domain': [('state', '=', 'refuse')]},
         }
         # default filter by value
         if not filterby:
