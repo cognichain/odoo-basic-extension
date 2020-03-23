@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <menuitem id="parent_menu_srm_invoice" name="进销存" sequence="0"/>
+        <menuitem id="parent_menu_srm_settings" name="配置" parent="parent_menu_srm_invoice" sequence="99" web_icon="fa fa-cog fa-fw"/>
+    </data>
+</openerp>

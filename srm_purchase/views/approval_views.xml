@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- 菜单和 actions -->
+        <record id="srm_purchase_approval_action" model="ir.actions.act_window">
+            <field name="name">审批流</field>
+            <field name="res_model">approval.strategy</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('res_model', '=', 'purchase.order')]</field>
+            <field name="target">current</field>
+        </record>
+
+        <menuitem id="submenu_purchase_approval" name="审批流"
+            parent="srm_purchase.parent_menu_srm_settings"
+            action="srm_purchase_approval_action" sequence="4" active="False"/>
+    </data>
+</odoo>

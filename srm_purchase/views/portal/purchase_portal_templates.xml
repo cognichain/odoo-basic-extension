@@ -1,14 +1,14 @@
 <odoo>
     <data>
-        <template id="portal_my_home_menu_po" name="Portal layout : po menu entries" inherit_id="portal.portal_layout" priority="20">
+        <template id="portal_my_home_menu_po" name="Portal layout : po menu entries" inherit_id="portal.portal_breadcrumbs" priority="20">
             <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
-                <li t-if="page_name == 'po'">
+                <li t-if="page_name == 'po'" class="breadcrumb-item ">
                     <a t-attf-href="/my/purchase?{{ keep_query() }}">采购订单</a>
                 </li>
-                <li t-if="page_name == 'purchase_quote'">
+                <li t-if="page_name == 'purchase_quote'" class="breadcrumb-item ">
                     <a t-attf-href="/my/purchase_quotation?{{ keep_query() }}">询价单</a>
                 </li>
-                <li t-if="order">
+                <li t-if="order" class="breadcrumb-item ">
                     <t t-if="is_delivery or delivery_history or reply_delivery_date or delivery_result_page">
                         <a t-attf-href="/my/purchase/#{order.id}?{{ keep_query() }}" t-esc="order.name"/>
                     </t>
@@ -16,10 +16,10 @@
                         <t t-esc="order.name"/>
                     </t>
                 </li>
-                <li t-if="is_delivery">
+                <li t-if="is_delivery" class="breadcrumb-item ">
                     发货
                 </li>
-                <li t-if="delivery_history">
+                <li t-if="delivery_history" class="breadcrumb-item ">
                     <t t-if="delivery_detail">
                         <a t-attf-href="/my/delivery/history/#{order.id}?{{ keep_query() }}">发货记录</a>
                     </t>
@@ -27,62 +27,66 @@
                         发货记录
                     </t>
                 </li>
-                <li t-if="reply_delivery_date">
+                <li t-if="reply_delivery_date" class="breadcrumb-item ">
                     回复预计交货日期
                 </li>
-                <li t-if="delivery_result_page">
+                <li t-if="delivery_result_page" class="breadcrumb-item ">
                     发货结果
                 </li>
-                <li t-if="delivery_detail and pick_id">
+                <li t-if="delivery_detail and pick_id" class="breadcrumb-item ">
                     <t t-esc="pick_id.name"/>
                 </li>
             </xpath>
         </template>
 
+        <template id="portal_my_home_inherit_purchase" name="My Portal" inherit_id="portal.portal_my_home" priority="200">
+            <xpath expr="//div[@class='o_portal_my_home']/h3" position="replace">
+                <h3>待办事项</h3>
+            </xpath>
+        </template>
+
         <template id="portal_my_po" name="My POs">
             <t t-call="portal.portal_layout">
-                <h3>采购订单
-                    <t t-call="portal.portal_searchbar"/>
-                </h3>
+                <t t-call="portal.portal_searchbar">
+                    <t t-set="title">采购订单</t>
+                </t>
                 <t t-if="not order_ids">
                     <p>目前暂无任何采购订单。</p>
                 </t>
-                <div t-if="order_ids" class="panel panel-default">
-                    <div class="table-responsive">
-                        <table class="table table-hover o_portal_my_doc_table">
-                            <thead>
-                                <tr class="active">
-                                    <th>采购单号</th>
-                                    <th>订购日期</th>
-                                    <th>订单金额</th>
-                                    <th>订单状态</th>
-                                </tr>
-                            </thead>
-                            <t t-foreach="order_ids" t-as="order_id">
-                                <tr>
-                                    <td>
-                                        <a t-attf-href="/my/purchase/{{order_id.id}}?{{keep_query()}}">
-                                            <t t-esc="order_id.name"/>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <span t-field="order_id.date_order"/>
-                                    </td>
-                                    <td>
-                                        <span t-field="order_id.amount_total"
-                                              t-options='{"widget": "monetary", "display_currency": order_id.currency_id}'/>
-                                    </td>
-                                    <td id="purchase_order_state">
-                                        <span t-field="order_id.state"/>
-                                    </td>
-                                </tr>
-                            </t>
-                        </table>
-                    </div>
+                <t t-if="order_ids" t-call="portal.portal_table">
+                    <thead>
+                        <tr class="active">
+                            <th>采购单号</th>
+                            <th>订购日期</th>
+                            <th>订单金额</th>
+                            <th>订单状态</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="order_ids" t-as="order_id">
+                            <tr>
+                                <td>
+                                    <a t-attf-href="/my/purchase/{{order_id.id}}?{{keep_query()}}">
+                                        <t t-esc="order_id.name"/>
+                                    </a>
+                                </td>
+                                <td>
+                                    <span t-field="order_id.date_order"/>
+                                </td>
+                                <td>
+                                    <span t-field="order_id.amount_total"
+                                          t-options='{"widget": "monetary", "display_currency": order_id.currency_id}'/>
+                                </td>
+                                <td id="purchase_order_state">
+                                    <span t-field="order_id.state"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
                     <div t-if="pager" class="o_portal_pager text-center">
                         <t t-call="portal.pager"/>
                     </div>
-                </div>
+                </t>
             </t>
         </template>
 
@@ -91,23 +95,13 @@
                 <input type="hidden" id="orderId" t-att-value="order.id"/>
                 <div id="optional_placeholder"/>
                 <div class="container">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
+                    <div class="card">
+                        <div class="card-body">
                             <div class="row">
-                                <div class="col-md-12">
-                                    <h4>
-                                        采购订单
-                                        <span t-esc="order.name"/>
-                                    </h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-lg-6">
                                     <strong>预定交货日期:</strong> <span t-field="order.date_planned" t-options='{"widget": "date"}'/>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-lg-6">
                                     <t t-if="order_cancelled is True">
                                         <strong>订单状态:</strong> <span t-esc="delivery_status"/>
                                     </t>
@@ -118,52 +112,60 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-lg-6">
                                     <strong>贸易条款:</strong> <span t-field="order.incoterm_id"/>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-lg-6">
                                    <strong>采购员:</strong> <span t-field="order.create_uid"/>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-lg-6">
                                     <strong>付款条款:</strong> <span t-field="order.payment_term_id"/>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-lg-6">
                                     <strong>订购日期:</strong> <span t-field="order.date_order" t-options='{"widget": "date"}'/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <strong>收货仓库:</strong> <span t-field="order.picking_type_id.warehouse_id.name"/>
+                                </div>
+                                <div class="col-lg-6">
+                                    <strong>送货地址:</strong> <span t-field="order.picking_type_id.warehouse_id.partner_id.name"/>
                                 </div>
                             </div>
                             <hr/>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-lg-6">
                                     <strong>产品</strong>
                                 </div>
-                                <div class="col-md-2 text-right">
+                                <div class="col-lg-2 text-right">
                                     <strong>单价</strong>
                                 </div>
-                                <div class="col-md-2 text-right">
+                                <div class="col-lg-2 text-right">
                                     <strong>数量</strong>
                                 </div>
-                                <div class="col-md-2 text-right">
+                                <div class="col-lg-2 text-right">
                                     <strong>小计</strong>
                                 </div>
                             </div>
                             <t t-foreach="order.order_line" t-as="ol">
                                 <div class="row purchases_vertical_align">
-                                    <div class="col-md-1 text-center">
+                                    <div class="col-lg-1 text-center">
                                         <img t-att-src="'/web/image/purchase.order.line/%s/product_image/48x48' % ol.id"/>
                                     </div>
-                                    <div id='product_name' class="col-md-5">
+                                    <div id='product_name' class="col-lg-5">
                                         <span t-esc="ol.product_id.name"/>
                                     </div>
-                                    <div class="col-md-2 text-right">
+                                    <div class="col-lg-2 text-right">
                                         <span t-field="ol.price_unit"
                                               t-options='{"widget": "monetary", "display_currency": order.currency_id}'/>
                                     </div>
-                                    <div class="col-md-2 text-right">
+                                    <div class="col-lg-2 text-right">
                                         <span t-esc="ol.product_qty"/>
                                     </div>
-                                    <div class="col-md-2 text-right">
+                                    <div class="col-lg-2 text-right">
                                         <span t-field="ol.price_subtotal"
                                               t-options='{"widget": "monetary", "display_currency": order.currency_id}'/>
                                     </div>
@@ -173,30 +175,30 @@
                             <hr/>
 
                             <div class="row">
-                                <div class="col-md-12 text-right">
+                                <div class="col-lg-12 text-right">
                                     <div class="row">
-                                        <div class="col-md-10 text-right">
+                                        <div class="col-lg-10 text-right">
                                             非税价:
                                         </div>
-                                        <div class="col-md-2 text-right">
+                                        <div class="col-lg-2 text-right">
                                             <span t-field="order.amount_untaxed"
                                                   t-options='{"widget": "monetary", "display_currency": order.currency_id}'/>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-10 text-right">
+                                        <div class="col-lg-10 text-right">
                                             税费:
                                         </div>
-                                        <div class="col-md-2 text-right">
+                                        <div class="col-lg-2 text-right">
                                             <span t-field="order.amount_tax"
                                                   t-options='{"widget": "monetary", "display_currency": order.currency_id}'/>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-10 text-right">
+                                        <div class="col-lg-10 text-right">
                                             <strong>总计:</strong>
                                         </div>
-                                        <div class="col-md-2 text-right">
+                                        <div class="col-lg-2 text-right">
                                             <strong>
                                                 <span t-field="order.amount_total"
                                                       t-options='{"widget": "monetary", "display_currency": order.currency_id}'/>
@@ -207,7 +209,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-lg-12">
                                     <div class="btn-toolbar po-operand" role="toolbar">
                                         <div class="btn-group" role="group" t-if="order.state == 'pending'">
                                             <button type="button" class="btn btn-success po-accept">确认订单</button>
@@ -218,7 +220,7 @@
                                                 <a t-attf-href="/my/delivery/ship/#{order.id}" class="btn btn-primary po-ship">发货</a>
                                             </t>
                                             <t t-else="">
-                                                <a t-attf-href="javascript:void(0);" class="btn btn-primary po-ship" t-att-disabled="True">发货</a>
+                                                <button class="btn btn-primary po-ship" t-att-disabled="True" t-att-style="'cursor:not-allowed'">发货</button>
                                             </t>
                                         </div>
                                     </div>
@@ -236,25 +238,16 @@
                 <input type="hidden" id="orderId" t-att-value="order.id"/>
                 <div id="optional_placeholder"/>
                 <div class="container">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h4>发货</h4>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="card">
                         <form t-attf-action="/my/delivery/action/#{order.id}" method="post">
-                        <div class="panel-body">
+                        <div class="card-body">
                             <div class='row'>
-                                <div class="col-md-12">
+                                <div class="col-lg-12">
                                     <t t-call="srm_purchase.portal_delivery_table"/>
                                 </div>
                             </div>
-                        </div>
-                        <div class="panel-body">
                             <div class='row'>
-                                <div class="col-md-8">
+                                <div class="col-lg-8">
                                     <div>
                                         <p>
                                             提示:
@@ -270,9 +263,9 @@
                                                 <input type="submit" class="btn btn-success" value="确认发货"/>
                                             </t>
                                             <t t-else="">
-                                                <button type="button" class="btn btn-success" disabled="True">确认发货</button>
+                                                <button class="btn btn-success" disabled="True" t-att-style="'cursor:not-allowed'">确认发货</button>
                                             </t>
-                                            <a type="button" class="btn btn-default" style="margin-left: 10px;" t-attf-href="/my/purchase/#{order.id}">返回订单</a>
+                                            <a type="button" class="btn btn-primary" style="margin-left: 10px;" t-attf-href="/my/purchase/#{order.id}" t-att-style="'margin-left: 10px;'">返回订单</a>
                                         </div>
                                     </div>
                                 </div>
@@ -286,18 +279,18 @@
         </template>
 
         <template id="portal_delivery_table" name="Delivery Table">
-            <div class="table-responsive">
-                <table class="table table-hover o_portal_my_doc_table">
-                    <thead>
-                        <tr class="active">
-                            <th>产品</th>
-                            <th>单价</th>
-                            <th>数量</th>
-                            <th>待发货</th>
-                            <th class="width-120">本次发货</th>
-                        </tr>
-                    </thead>
-                    <t t-foreach="order.order_line" t-as="line_id">
+            <div t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>产品</th>
+                        <th>单价</th>
+                        <th>数量</th>
+                        <th>待发货</th>
+                        <th class="width-120">本次发货</th>
+                    </tr>
+                </thead>
+                <t t-foreach="order.order_line" t-as="line_id">
+                    <t t-if="line_id.product_id.type != 'service'">
                         <tr t-att-data-id="line_id.id" class="delivery-order-line">
                             <td>
                                 <span t-esc="line_id.product_id.name"/>
@@ -322,7 +315,7 @@
                             </td>
                         </tr>
                     </t>
-                </table>
+                </t>
             </div>
         </template>
 
@@ -330,26 +323,19 @@
             <t t-call="portal.portal_layout">
                 <div id="optional_placeholder"/>
                 <div class="container">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
+                    <div class="card">
+                        <div class="card-body">
                             <div class="row">
-                                <div class="col-md-12">
-                                    <h4>发货结果</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-8 col-sm-offset-2 text-center">
+                                <div class="col-lg-12 text-center">
                                     <span class="fa fa-check-circle fa-2x" style="color: green; vertical-align:middle;"/>
                                     <span style="font-size:23px; display:inline-block; vertical-align:middle;">发货确认成功</span>
                                 </div>
                             </div>
 
                             <div class="row" style="margin-top: 30px;">
-                                <div class="col-md-8 col-sm-offset-2 text-center">
-                                    <a t-attf-href="/my/purchase" class="btn btn-default" style="margin-right: 10px;">返回订单列表</a>
-                                    <a t-attf-href="/my/purchase/#{order.id}" class="btn btn-default" style="margin-left: 10px;">返回当前订单</a>
+                                <div class="col-lg-12 text-center">
+                                    <a t-attf-href="/my/purchase" class="btn btn-primary" style="margin-right: 10px;">返回订单列表</a>
+                                    <a t-attf-href="/my/purchase/#{order.id}" class="btn btn-primary" style="margin-left: 10px;">返回当前订单</a>
                                 </div>
                             </div>
                         </div>

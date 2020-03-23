@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="srm_purchase_partner_view_tree" model="ir.ui.view">
+            <field name="name">res.partner.view_tree</field>
+            <field name="model">res.partner</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="客户联系人">
+                    <field name="name"/>
+                    <field name="phone"/>
+                    <field name="property_product_pricelist"/>
+                </tree>
+            </field>
+        </record>
+        <record id="srm_purchase_partner_view_form" model="ir.ui.view">
+            <field name="name">res.partner.view_form</field>
+            <field name="model">res.partner</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="客户联系人" version="7.0">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="phone"/>
+                            <field name="mobile"/>
+                            <field name="email"/>
+                            <field name="child_ids" string="地址"
+                                   context="{'default_parent_id': active_id, 'default_customer': True, 'default_type': 'delivery'}">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="mobile"/>
+                                    <field name="street"/>
+                                    <field name="type" invisible="1"/>
+                                </tree>
+                            </field>
+                            <field name="comment"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="srm_purchase_supplier_view_tree" model="ir.ui.view">
+            <field name="name">res.partner.view_tree</field>
+            <field name="model">res.partner</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="供应商联系人">
+                    <field name="name"/>
+                    <field name="phone"/>
+                </tree>
+            </field>
+        </record>
+        <record id="srm_purchase_supplier_view_form" model="ir.ui.view">
+            <field name="name">res.partner.view_form</field>
+            <field name="model">res.partner</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="供应商联系人" version="7.0">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="phone"/>
+                            <field name="mobile"/>
+                            <field name="email"/>
+                            <field name="child_ids" string="地址"
+                                   context="{'default_parent_id': active_id, 'default_supplier': True,}">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="mobile"/>
+                                    <field name="street"/>
+                                </tree>
+                            </field>
+                            <field name="comment"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="res_partner_action_295" model="ir.actions.act_window">
+            <field name="name">供应商</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+            <field name="context">{ 'default_supplier': True, 'default_customer': False, 'default_is_company': True}
+            </field>
+            <field name="domain">[["supplier","=",True],["parent_id","=",False]]</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('srm_purchase_supplier_view_tree')}),
+
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('srm_purchase_supplier_view_form')}),
+
+                    ]"/>
+        </record>
+        <record id="res_partner_action_294" model="ir.actions.act_window">
+            <field name="name">客户</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+            <field name="domain">[["customer","=",True],["parent_id","=",False]]</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('srm_purchase_partner_view_tree')}),
+
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('srm_purchase_partner_view_form')}),
+
+                    ]"/>
+        </record>
+        <menuitem action="res_partner_action_294" id="menu_srm_purchase_partner" name="客户" parent="parent_menu_srm_invoice"
+                  sequence="1" web_icon="fa fa-user" groups="srm_purchase.group_sale_main"/>
+        <menuitem action="res_partner_action_295" id="menu_srm_purchase_supplier" name="供应商" parent="parent_menu_srm_invoice"
+                  sequence="2" web_icon="fa fa-handshake-o" groups="srm_purchase.group_purchase_main"/>
+
+    </data>
+</odoo>
